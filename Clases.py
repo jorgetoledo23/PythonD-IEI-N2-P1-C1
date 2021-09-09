@@ -1,97 +1,60 @@
-class Botella:
-    capacidadMaxima = None
-    color = None
-    marca = None
-    alto = None
-    ancho = None
-    materialConstruccion = None
-    capacidadActual = 0
-
-    def rellenarBotella(self, ml):
-        if ((self.capacidadActual + ml) > self.capacidadMaxima):
-            return "No se puede llenar la botella, SUPERA LA CAPACIDAD MAXIMA!"
-        else:
-            #self.capacidadActual += ml
-            self.capacidadActual = self.capacidadActual + ml
-            return "Botella Rellenada!"
-
-
-class Animal:
-    pass
-
-class Gato:
-    #Atributo de Clase
-    especie = "Mamifero"
-    subEspecie = "Felino"
-
-
 class Auto:
-    #Atributos de Clase
-    cantidadRuedas = 4
+    
+    #Constructor (Se ejecuta automaticamente cuando el Objeto es creado!)
+    def __init__(self, pat, nchas, mar, model, color):
 
-    #Constructor
-    def __init__(self, pat, nchas, marca, modelo, color, tipoCombustible, tipoAuto, km):
-        #Atributos de Instancia
+        self.__Patente = str(pat).upper()
+        self.Nchasis = str(nchas).upper()
+        self.Marca = mar
+        self.Modelo = model
+        self.__Color = color
 
-        #Encapsular
-        self.__patente = str(pat).upper()
-        self.nchasis = str(nchas).lower()
-        self.marca = marca
-        self.modelo = modelo
-        self.__color = color
-        self.tipoCombustible = tipoCombustible
-        self.tipoAuto = tipoAuto
-        self.kilometraje = km
+    def VerInfoAuto(self):
+        return f"Auto Patente {self.__Patente}, Numero Chasis: {self.Nchasis}, Marca: {self.Marca}, Modelo: {self.Modelo}, Color: {self.__Color}"
 
-    def verPatente(self):
-        return self.__patente
+    def VerPatente(self):
+        """ Metodo que retorna la Patente del Vehiculo"""
+        return self.__Patente
 
-    def verColor(self):
-        return self.__color
+    def VerColor(self):
+        """ Metodo que retorna el Color del Vehiculo"""
+        return self.__Color
 
-    def cambiarColor(self, color):
-        self.__color = color
-
-
-class Persona:
-
-    def __init__(self, rut, nom, ape, edad):
-        self.nombres = nom
-        self.apellidos = ape,
-        self.edad = edad
-
-        if(edad >=18):
-            self.mayorEdad = True
-        else:
-            self.mayorEdad = False
-
-        #Logica para validar/formatear el rut 17.172.876-K
+    def CambiarColor(self, color):
+        self.__Color = color
+    
 
 class Mecanico:
-    def __init__(self, rut, nom, ape, edad):
-        self.nombres = nom
-        self.apellidos = ape,
-        self.edad = edad
-        self.rut = rut
 
-        if(edad >=18):
-            self.mayorEdad = True
-        else:
-            self.mayorEdad = False
+    #Constructor
+    def __init__(self, rut, nom, ape, edad, direc, email):
 
-    def getNombreCompleto(self):
-        return str(self.nombres) + " " + str(self.apellidos)
+        self.Rut = rut #17.123.456-7 #Tarea
+        self.Nombres = nom #Juan Ignacio #Tarea
+        self.Apellidos = ape #Roman Riquelme #Tarea
+        self.Edad = edad
+        self.Direccion = direc
+        self.CorreoElectronico = email
+
+        if (edad >= 18):self.MayorEdad = True
+        else: self.MayorEdad = False
+
+    def VerInfoMecanico(self):
+        return f"RUT: {self.Rut}, Nombres: {self.Nombres}, Apellidos: {self.Apellidos}"
+
 
 class Reparacion:
+    
+    def __init__(self, cod, auto, mecanico, valor, repuestos):
+        self.Codigo = cod
+        self.AutoAsignado = auto
+        self.Mecanico = mecanico
+        self.Valor = valor
+        self.RepuestoUtilizados = repuestos
 
-    def __init__(self, auto, mecanico, costo, repuestos):
-        self.autoReparado = auto
-        self.mecanicoAsignado = mecanico
-        self.valor = costo
-        self.repuestosUtilizados = repuestos
+    def VerInfoReparacion(self): 
+        """Metodo que retorna la informacion detallada de la reparacion"""      
+        return f"INFO REPARACION: AUTO REPARADO: {self.AutoAsignado.VerInfoAuto()}, MECANICO ASIGNADO: {self.Mecanico.VerInfoMecanico()}, VALOR: ${self.Valor}"
 
-    def getInfoReparacion(self):
-        return f"INFO REPARACION: AUTO PATENTE: {self.autoReparado.verPatente()} COLOR: {self.autoReparado.verColor() }, MECANICO ASIGNADO: {self.mecanicoAsignado.getNombreCompleto()} PRECIO REPARACION: {self.valor}"
-
-    def cambiarColor(self, color):
-        self.autoReparado.cambiarColor(color)
+    def CambiarColorAuto(self, color):
+        self.AutoAsignado.CambiarColor(color)
