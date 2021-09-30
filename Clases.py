@@ -3,7 +3,7 @@ import os
 class Auto:
     
     #Constructor (Se ejecuta automaticamente cuando el Objeto es creado!)
-    def __init__(self, pat, nchas, mar, model, color, year):
+    def __init__(self, pat, nchas, color, mar, model, year):
 
         self.__Patente = str(pat).upper()
         self.__Nchasis = str(nchas).upper()
@@ -20,6 +20,10 @@ class Auto:
         """ Metodo que retorna la Patente del Vehiculo"""
         return self.__Patente
 
+    def setPatente(self, pat):
+        """ Metodo que modifica la Patente del Vehiculo"""
+        self.__Patente = pat
+
     def VerColor(self):
         """ Metodo que retorna el Color del Vehiculo"""
         return self.__Color
@@ -31,14 +35,13 @@ class Auto:
 class Mecanico:
 
     #Constructor
-    def __init__(self, rut, nom, ape, edad, direc, email):
+    def __init__(self, rut, nom, ape, edad, direc):
 
         self.__Rut = rut #17.123.456-7 #Tarea
         self.__Nombres = nom #Juan Ignacio #Tarea
         self.__Apellidos = ape #Roman Riquelme #Tarea
         self.__Edad = edad
         self.__Direccion = direc
-        self.__CorreoElectronico = email
 
 
     def GetInfo(self):
@@ -47,8 +50,7 @@ class Mecanico:
 
 class Reparacion:
     
-    def __init__(self, cod, auto, mecanico, valor, repuestos):
-        self.Codigo = cod
+    def __init__(self, auto, mecanico, valor, repuestos):
         self.AutoAsignado = auto
         self.Mecanico = mecanico
         self.Valor = valor
@@ -56,7 +58,7 @@ class Reparacion:
 
     def GetInfo(self): 
         """Metodo que retorna la informacion detallada de la reparacion"""      
-        return f"INFO REPARACION: AUTO REPARADO: {self.AutoAsignado.VerInfoAuto()}, MECANICO ASIGNADO: {self.Mecanico.VerInfoMecanico()}, VALOR: ${self.Valor}"
+        return f"INFO REPARACION: AUTO REPARADO: {self.AutoAsignado.GetInfo()}, MECANICO ASIGNADO: {self.Mecanico.GetInfo()}, VALOR: ${self.Valor}"
 
     def CambiarColorAuto(self, color):
         self.AutoAsignado.CambiarColor(color)
@@ -79,6 +81,9 @@ class MenuPrincipal:
         print("OPCION 4: Ver Autos")
         print("OPCION 5: Ver Mecanicos")
         print("OPCION 6: Ver Reparaciones")
+
+        print("OPCION 7: Editar Auto")
+        print("OPCION 8: Eliminar Auto")
 
 
         print("Escriba Salir para terminar")
