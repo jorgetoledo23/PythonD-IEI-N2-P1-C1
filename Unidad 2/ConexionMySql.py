@@ -80,3 +80,11 @@ class DAO:
             A = Auto(patente, numero_chasis,color, marca, year, modelo, rut_cliente)
             lista.append(A)
         return lista
+
+#CRUD
+
+#C => Create => Insertar datos en la BD
+#R => Read => Select * from tabla
+
+#U => Update => Actualizar registros
+#D => Delete => Eliminar registros ya almacenados
