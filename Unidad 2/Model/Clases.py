@@ -35,7 +35,7 @@ class Auto:
 
 
     def getInfo(self):
-        return f"Vehiculo Patentte {self.getPatente()}, Marca: {self.getMarca()}, Modelo: {self.getModelo()}, Color: {self.getColor()}, Cliente: {self.getCliente()}"
+        return f"Vehiculo Patente {self.getPatente()}, Marca: {self.getMarca()}, Modelo: {self.getModelo()}, Color: {self.getColor()}, Cliente: {self.getCliente()}"
 
 
 class Persona:
